@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<script src="jquery-2.0.3.js"></script>
+<script src="quib-console.js"></script>
+</head>
+<body>
+<div id="content"></div>
+
+</body>
+<script>
+    var cons = new Console();
+    document.getElementById('content').appendChild(cons.canvas);
+    $(document).ready(function() {
+        setTimeout(function() {
+            cons.print("test\n");
+            var i;
+            for(i = 0; i < 256; i++) {
+                cons.print(i);
+            }
+        }, 100);
+    });
+</script>
+</html>
