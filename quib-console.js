@@ -46,6 +46,7 @@ function Console( )
     this.canvas = canvas;
     this.canvas.width = 640;
     this.canvas.height = 400;
+    this.dpiScale = 1;
     this.canvas.tabIndex = 0;
     this.ctx = this.canvas.getContext('2d');
     this.ctx.setTransform( 1, 0, 0, 1, 0, 0 );
@@ -127,6 +128,60 @@ Console.prototype = {
         13: { width: 320, height: 200 }
     },
 
+    setDpiScale: function(scale)
+    {
+        if(typeof(scale) !== "number") {
+            throw "setDpiScale: invalid 'scale' argument.";
+        }
+
+        if(scale === this.dpiScale) {
+            return;
+        }
+        this.dpiScale = scale;
+
+        if(scale === 2) {
+            this.charImg.setAttribute("src", "charmap-2x.png");
+        }
+
+        var canvas = document.createElement("canvas");
+        this.canvas = canvas;
+        this.canvas.width = 640 * scale;
+        this.canvas.height = 400 * scale;
+        this.canvas.tabIndex = 0;
+        this.ctx = this.canvas.getContext('2d');
+        this.ctx.setTransform( 1, 0, 0, 1, 0, 0 );
+        this.reset(false);
+        this.hasFocus = false;
+
+        var self = this;
+
+        $(window).keydown( function( event ) {
+            if ( self.hasFocus ) {    
+                self.onKeyDown( event );
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        $(canvas).click( function( event ) {
+            canvas.style.borderColor = "#008800";
+            $(canvas).focus();
+            self.hasFocus = true;
+            event.stopPropagation();
+        });
+
+        $(window).click( function( event ) {
+            self.hasFocus = false;
+            canvas.style.borderColor = "#888888";
+        });
+
+        $(canvas).css("border-width", "5px");
+        $(canvas).css("border-color", "#888888");
+        $(canvas).css("border-style", "solid");
+        $(canvas).css("width", "640px");
+        $(canvas).css("height", "400px");
+    },
+
     reset: function(testMode) 
     {
         this.fgcolourNum = 7;
@@ -142,6 +197,10 @@ Console.prototype = {
         this.cols = 80;
         this.charWidth = 8;
         this.charHeight = 16;
+        if(this.charImg.getAttribute("src") === "charmap-2x.png") {
+            this.charWidth = 16;
+            this.charHeight = 32;
+        }
 
         this.inputMode = false;
         this.onInputDone = null;
@@ -185,6 +244,9 @@ Console.prototype = {
             return false;
         }
 
+        dimensions.width *= this.dpiScale;
+        dimensions.height *= this.dpiScale;
+
         this.cursor( false );
 
         $(this.canvas).width( dimensions.width );
@@ -192,7 +254,7 @@ Console.prototype = {
 
         this.ctx.scale( this.width / dimensions.width,
             this.height / dimensions.height );
-    
+
         this.width = dimensions.width;
         this.height = dimensions.height;
     },

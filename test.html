@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Test</title>
 <script src="jquery-2.0.3.js"></script>
 <script src="quib-console.js"></script>
 </head>
+
 <body>
 <div id="content"></div>
-
 </body>
+
 <script>
     var cons = new Console();
+    cons.setDpiScale(2);
     document.getElementById('content').appendChild(cons.canvas);
     $(document).ready(function() {
         setTimeout(function() {
@@ -22,4 +25,5 @@
         }, 100);
     });
 </script>
+
 </html>
