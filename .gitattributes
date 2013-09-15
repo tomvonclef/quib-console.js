@@ -7,9 +7,6 @@
 *.png binary
 *.jpg binary
 *.gif binary
-*.pdf binary
-*.dll binary
-*.pdb binary
 
 .gitignore      text eol=lf
 .gitattributes  text eol=lf
