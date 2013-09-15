@@ -11,3 +11,5 @@ see: https://en.wikipedia.org/wiki/Code_page_437
 
 In particular, qb.js does not support smiley characters, which I
 have added!
+
+-Tom von Clef (github.com/tvonclef)
