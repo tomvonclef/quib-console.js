@@ -12,7 +12,8 @@
 </body>
 
 <script>
-    var cons = new Console(2);
+    var pixelRatio = (window.devicePixelRatio === 2) ? 2 : 1;
+    var cons = new Console(pixelRatio);
     document.getElementById('content').appendChild(cons.canvas);
     $(document).ready(function() {
         setTimeout(function() {
