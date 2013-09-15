@@ -12,8 +12,7 @@
 </body>
 
 <script>
-    var cons = new Console();
-    cons.setDpiScale(2);
+    var cons = new Console(2);
     document.getElementById('content').appendChild(cons.canvas);
     $(document).ready(function() {
         setTimeout(function() {
