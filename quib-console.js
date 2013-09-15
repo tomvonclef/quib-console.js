@@ -53,8 +53,8 @@ function Console( scale )
     this.ctx.setTransform( 1, 0, 0, 1, 0, 0 );
     this.charImg = document.createElement("img");
     this.charImg.setAttribute("src", (scale === 2)
-                              ? "charmap-2x.png"
-                              : "charmap.png");
+                              ? "img/charmap-2x.png"
+                              : "img/charmap.png");
 
     this.interval = 0;
     this.cursorEnabled = false;
@@ -147,12 +147,8 @@ Console.prototype = {
 
         this.rows = 25;
         this.cols = 80;
-        this.charWidth = 8;
-        this.charHeight = 16;
-        if(this.charImg.getAttribute("src") === "charmap-2x.png") {
-            this.charWidth = 16;
-            this.charHeight = 32;
-        }
+        this.charWidth = 8 * this.dpiScale;
+        this.charHeight = 16 * this.dpiScale;
 
         this.inputMode = false;
         this.onInputDone = null;
