@@ -1,18 +1,19 @@
-quib-console.js
+quib-console.js v0.1
 ================
 
-This is a javascript HTML5 canvas console based on code taken from
+This is a javascript HTML5 canvas console based on 
 the excellent qb.js (http://stevehanov.ca/blog/index.php?id=92).
 
-It translates the original QBasic console commands into an API.
+It translates the original QBasic console commands into methods of a class.
 
 This version has HiDPI support. By using 2x-scaled images, it avoids
 HTML5 canvas fuzziness that otherwise occurs when scalingup the glyph images.
 
 It supports all characters from code page 437.
 See also: https://en.wikipedia.org/wiki/Code_page_437. 
-In particular, qb.js does not include smile characters, but I
-have added those!
+In particular, qb.js does not include smile characters, this does!
+
+jQuery is a dependency.
 
 ## Example
 
@@ -46,4 +47,3 @@ have added those!
 + scroll: function()
 + setKeyBuffer: function( str )
 + toggleCursor: function()
-
