@@ -19,6 +19,7 @@ jQuery is a dependency.
 
 ```js
    const cons = new Console(2);    // 2 for 2x scaling (for HiDPI displays)
+   document.getElementById('content').appendChild(cons.canvas);
    cons.print("Hello World");
 ```
 
