@@ -7,7 +7,7 @@ the excellent qb.js (http://stevehanov.ca/blog/index.php?id=92).
 It translates the original QBasic console commands into methods of a class.
 
 This version has HiDPI support. By using 2x-scaled images, it avoids
-HTML5 canvas fuzziness that otherwise occurs when scalingup the glyph images.
+HTML5 canvas fuzziness that otherwise occurs when scaling up bitmap images.
 
 It supports all characters from code page 437.
 See also: https://en.wikipedia.org/wiki/Code_page_437. 
